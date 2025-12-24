@@ -1,17 +1,20 @@
 <?php
-$url = $_GET['url'];
-$referer = $_GET['referer'];
-$reason = $_GET['reason'];
-$reason_code = $_GET['reasoncode'];
-$timebound = $_GET['timebound'];
-$action = $_GET['action'];
-$kind = $_GET['kind'];
-$rule = $_GET['rule'];
-$cat = $_GET['cat'];
-$user = $_GET['user'];
-$lang = $_GET['lang'];
-$zsq = explode("zsq", $_GET['zsq'];
+$url         = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+$referer     = filter_input(INPUT_GET, 'referer', FILTER_SANITIZE_URL);
+$reason      = filter_input(INPUT_GET, 'reason', FILTER_SANITIZE_SPECIAL_CHARS);
+$reason_code = filter_input(INPUT_GET, 'reasoncode', FILTER_SANITIZE_NUMBER_INT);
+$timebound   = filter_input(INPUT_GET, 'timebound', FILTER_SANITIZE_SPECIAL_CHARS);
+$action      = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
+$kind        = filter_input(INPUT_GET, 'kind', FILTER_SANITIZE_SPECIAL_CHARS);
+$rule        = filter_input(INPUT_GET, 'rule', FILTER_SANITIZE_SPECIAL_CHARS);
+$cat         = filter_input(INPUT_GET, 'cat', FILTER_SANITIZE_SPECIAL_CHARS);
+$user        = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_SPECIAL_CHARS);
+$lang        = filter_input(INPUT_GET, 'lang', FILTER_SANITIZE_SPECIAL_CHARS);
+$zsq_param   = filter_input(INPUT_GET, 'zsq', FILTER_DEFAULT);
+
+$zsq = $zsq_param !== null ? explode("zsq", $zsq_param) : [];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
